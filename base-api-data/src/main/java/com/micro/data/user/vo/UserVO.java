@@ -1,13 +1,7 @@
-package com.micro.api.user.entity;
+package com.micro.data.user.vo;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.micro.data.user.dto.AddUserDTO;
-import com.micro.data.user.vo.UserVO;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,14 +9,10 @@ import java.util.Date;
  * 说明：
  *
  * @author liw@suncd.com
- * @date 2017/12/27 21:51
+ * @date 2017/12/31 18:58
  */
-@Entity
-@Table(name = "micro_user")
-public class User implements Serializable {
+public class UserVO implements Serializable {
 
-    @Id
-    @GeneratedValue
     private Long id;
 
     private String loginId;
@@ -44,7 +34,6 @@ public class User implements Serializable {
     private Boolean isDelete = false;
 
     private Boolean isActivate = false;
-
 
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime = new Date();
@@ -144,37 +133,5 @@ public class User implements Serializable {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-
-    public void fromAdd(AddUserDTO addUser){
-        this.setSex(addUser.getSex());
-        this.setQq(addUser.getQq());
-        this.setPassword(addUser.getPassword());
-        this.setName(addUser.getName());
-        this.setMobile(addUser.getMobile());
-        this.setLoginId(addUser.getLoginId());
-        this.setHeadImage(addUser.getHeadImage());
-        this.setEmail(addUser.getEmail());
-        this.setDelete(false);
-        this.setActivate(true);
-        this.setCreateTime(new Date());
-    }
-
-    public UserVO toVO(){
-        UserVO vo = new UserVO();
-        vo.setActivate(this.getActivate());
-        vo.setCreateTime(this.getCreateTime());
-        vo.setDelete(this.getDelete());
-        vo.setEmail(this.getEmail());
-        vo.setHeadImage(this.getHeadImage());
-        vo.setId(this.getId());
-        vo.setLoginId(this.getLoginId());
-        vo.setMobile(this.getMobile());
-        vo.setName(this.getName());
-        vo.setPassword(this.getPassword());
-        vo.setQq(this.getQq());
-        vo.setSex(this.getSex());
-        return vo;
-    }
-
 
 }

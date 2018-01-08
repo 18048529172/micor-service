@@ -1,8 +1,7 @@
 package com.micro.api.user.service;
 
-import com.micro.api.user.entity.User;
-import com.micro.base.api.data.user.dto.AddUserDTO;
-import com.micro.base.api.data.user.vo.UserVO;
+import com.micro.data.user.dto.AddUserDTO;
+import com.micro.data.user.vo.UserVO;
 
 /**
  * 说明：

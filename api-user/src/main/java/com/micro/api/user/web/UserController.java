@@ -1,11 +1,11 @@
 package com.micro.api.user.web;
 
 import com.micro.api.user.service.UserService;
-import com.micro.base.api.data.user.dto.AddUserDTO;
-import com.micro.base.api.data.user.vo.UserVO;
-import com.micro.base.web.response.Body;
-import com.micro.base.web.response.Response;
-import com.micro.base.web.response.ResponseTemplate;
+import com.micro.data.user.dto.AddUserDTO;
+import com.micro.data.user.vo.UserVO;
+import com.micro.web.response.Body;
+import com.micro.web.response.Response;
+import com.micro.web.response.ResponseTemplate;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

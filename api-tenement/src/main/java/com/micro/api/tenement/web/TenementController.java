@@ -1,10 +1,10 @@
 package com.micro.api.tenement.web;
 
 import com.micro.api.tenement.service.TenementService;
-import com.micro.base.api.data.tenement.dto.AddTenementDTO;
-import com.micro.base.web.response.Body;
-import com.micro.base.web.response.Response;
-import com.micro.base.web.response.ResponseTemplate;
+import com.micro.data.tenement.dto.AddTenementDTO;
+import com.micro.web.response.Body;
+import com.micro.web.response.Response;
+import com.micro.web.response.ResponseTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

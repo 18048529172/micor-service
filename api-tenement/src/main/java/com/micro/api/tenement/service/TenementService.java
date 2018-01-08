@@ -1,7 +1,7 @@
 package com.micro.api.tenement.service;
 
-import com.micro.base.api.data.tenement.dto.AddTenementDTO;
-import com.micro.base.api.data.tenement.vo.TenementVO;
+import com.micro.data.tenement.dto.AddTenementDTO;
+import com.micro.data.tenement.vo.TenementVO;
 
 /**
  * 说明：

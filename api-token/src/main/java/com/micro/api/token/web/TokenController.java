@@ -1,10 +1,10 @@
 package com.micro.api.token.web;
 
 import com.micro.api.token.service.TokenService;
-import com.micro.base.exception.ExceptionChecks;
-import com.micro.base.web.response.Body;
-import com.micro.base.web.response.Response;
-import com.micro.base.web.response.ResponseTemplate;
+import com.micro.exception.ExceptionChecks;
+import com.micro.web.response.Body;
+import com.micro.web.response.Response;
+import com.micro.web.response.ResponseTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,7 +1,7 @@
 package com.micro.zuul.server.filter;
 
-import com.micro.base.web.response.Response;
-import com.micro.base.web.response.ResponseTemplate;
+import com.micro.web.response.Response;
+import com.micro.web.response.ResponseTemplate;
 import com.micro.zuul.server.feign.TokenService;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;

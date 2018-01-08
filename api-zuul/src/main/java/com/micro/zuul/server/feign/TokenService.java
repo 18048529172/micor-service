@@ -1,6 +1,6 @@
 package com.micro.zuul.server.feign;
 
-import com.micro.base.web.response.Response;
+import com.micro.web.response.Response;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
