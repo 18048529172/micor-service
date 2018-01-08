@@ -4,8 +4,8 @@ import com.micro.api.authority.api.authority.entity.Permission;
 import com.micro.api.authority.api.authority.entity.Role;
 import com.micro.api.authority.api.authority.entity.RolePermission;
 import com.micro.api.authority.api.authority.entity.UserRole;
-import com.micro.base.api.data.authority.dto.QueryPremissionDTO;
-import com.micro.base.exception.ExceptionChecks;
+import com.micro.data.authority.dto.QueryPremissionDTO;
+import com.micro.exception.ExceptionChecks;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 

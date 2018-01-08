@@ -2,8 +2,8 @@ package com.micro.api.authority.api.authority.dao.jpaspecification;
 
 import com.micro.api.authority.api.authority.entity.Role;
 import com.micro.api.authority.api.authority.entity.UserRole;
-import com.micro.base.api.data.authority.dto.QueryRoleDTO;
-import com.micro.base.exception.ExceptionChecks;
+import com.micro.data.authority.dto.QueryRoleDTO;
+import com.micro.exception.ExceptionChecks;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 

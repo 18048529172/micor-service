@@ -1,8 +1,9 @@
 package com.micro.api.authority.api.authority.service;
 
 import com.micro.api.authority.api.authority.dao.jpaspecification.PermissionSpecification;
-import com.micro.base.api.data.authority.dto.AddPermissionDTO;
-import com.micro.base.api.data.authority.vo.PermissionVO;
+import com.micro.data.authority.dto.AddPermissionDTO;
+import com.micro.data.authority.vo.PermissionVO;
+
 
 import java.util.List;
 

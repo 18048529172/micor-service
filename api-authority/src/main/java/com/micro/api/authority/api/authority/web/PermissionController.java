@@ -2,11 +2,11 @@ package com.micro.api.authority.api.authority.web;
 
 import com.micro.api.authority.api.authority.dao.jpaspecification.PermissionSpecification;
 import com.micro.api.authority.api.authority.service.PermissionService;
-import com.micro.base.api.data.authority.dto.AddPermissionDTO;
-import com.micro.base.api.data.authority.dto.QueryPremissionDTO;
-import com.micro.base.web.response.Body;
-import com.micro.base.web.response.Response;
-import com.micro.base.web.response.ResponseTemplate;
+import com.micro.data.authority.dto.AddPermissionDTO;
+import com.micro.data.authority.dto.QueryPremissionDTO;
+import com.micro.web.response.Body;
+import com.micro.web.response.Response;
+import com.micro.web.response.ResponseTemplate;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

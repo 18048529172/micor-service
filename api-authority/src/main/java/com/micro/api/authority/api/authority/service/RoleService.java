@@ -1,9 +1,8 @@
 package com.micro.api.authority.api.authority.service;
 
-import com.micro.api.authority.api.authority.entity.Role;
-import com.micro.base.api.data.authority.dto.AddRoleDTO;
-import com.micro.base.api.data.authority.dto.QueryRoleDTO;
-import com.micro.base.api.data.authority.vo.RoleVO;
+import com.micro.data.authority.dto.AddRoleDTO;
+import com.micro.data.authority.dto.QueryRoleDTO;
+import com.micro.data.authority.vo.RoleVO;
 
 import java.util.List;
 

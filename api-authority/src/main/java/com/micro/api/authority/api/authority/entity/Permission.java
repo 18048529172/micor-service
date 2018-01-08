@@ -1,7 +1,7 @@
 package com.micro.api.authority.api.authority.entity;
 
-import com.micro.base.api.data.authority.dto.AddPermissionDTO;
-import com.micro.base.api.data.authority.vo.PermissionVO;
+import com.micro.data.authority.dto.AddPermissionDTO;
+import com.micro.data.authority.vo.PermissionVO;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;

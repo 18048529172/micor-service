@@ -1,6 +1,6 @@
 package com.micro.api.authority.api.authority.configs;
 
-import com.micro.base.web.response.ResponseTemplate;
+import com.micro.web.response.ResponseTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

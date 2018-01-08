@@ -1,7 +1,7 @@
 package com.micro.api.authority.api.authority.entity;
 
-import com.micro.base.api.data.authority.dto.AddRoleDTO;
-import com.micro.base.api.data.authority.vo.RoleVO;
+import com.micro.data.authority.dto.AddRoleDTO;
+import com.micro.data.authority.vo.RoleVO;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;

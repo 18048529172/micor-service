@@ -6,10 +6,10 @@ import com.micro.api.authority.api.authority.dao.jpaspecification.RoleSpecificat
 import com.micro.api.authority.api.authority.entity.Role;
 import com.micro.api.authority.api.authority.entity.UserRole;
 import com.micro.api.authority.api.authority.service.RoleService;
-import com.micro.base.api.data.authority.dto.AddRoleDTO;
-import com.micro.base.api.data.authority.dto.QueryRoleDTO;
-import com.micro.base.api.data.authority.vo.RoleVO;
-import com.micro.base.exception.ExceptionChecks;
+import com.micro.data.authority.dto.AddRoleDTO;
+import com.micro.data.authority.dto.QueryRoleDTO;
+import com.micro.data.authority.vo.RoleVO;
+import com.micro.exception.ExceptionChecks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
