@@ -29,6 +29,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.micro.base.web.response</groupId>
+			<artifactId>base-web-response</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 
 

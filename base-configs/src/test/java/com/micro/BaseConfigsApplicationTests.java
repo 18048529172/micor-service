@@ -1,4 +1,4 @@
-package com.micro.base.api.configs.baseconfigs;
+package com.micro;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
