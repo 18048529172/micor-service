@@ -47,6 +47,11 @@ public class TenementServiceImpl implements TenementService {
         return tenement.toVO();
     }
 
+    @Override
+    public Boolean answerApplyByLoginId(String loginId) {
+        return this.tenementDAO.countByApplyUserLoginIdAndIsDeleteFalse(loginId) > 0;
+    }
+
     private void logicCheck(AddTenementDTO addTenement) {
         //验证此用户是否已经申请
         long countByLoginId = this.tenementDAO.countByApplyUserLoginIdAndIsDeleteFalse(addTenement.getApplyUserLoginId());

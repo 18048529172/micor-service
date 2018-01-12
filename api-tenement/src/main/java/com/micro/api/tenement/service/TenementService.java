@@ -17,4 +17,6 @@ public interface TenementService {
 
     TenementVO findByLoginId( String loginId );
 
+    Boolean answerApplyByLoginId( String loginId );
+
 }
