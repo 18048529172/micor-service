@@ -34,7 +34,7 @@ public class TokenServiceImpl implements TokenService {
     @Override
     public String createAccessToken(String appId, long exTime, TimeUnit timeUnit) {
         String uid = UUID.randomUUID().toString();
-        String appIdUid = uid+appId+String.valueOf(System.currentTimeMillis());
+        String appIdUid = uid+String.valueOf(System.currentTimeMillis());
         String accessToken = MD5Util.getMD5(appIdUid);
         boolean setSuccess = this.stringRedisTemplate.opsForValue().setIfAbsent(accessToken,appId);
         if(setSuccess){
