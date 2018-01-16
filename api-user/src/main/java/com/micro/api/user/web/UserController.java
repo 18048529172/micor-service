@@ -12,6 +12,9 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.GET;
+import java.util.List;
+
 /**
  * 说明：
  *
@@ -29,7 +32,7 @@ public class UserController {
     private ResponseTemplate responseTemplate;
 
     @ApiOperation(value = "新增用户")
-    @PostMapping("/user/add")
+    @PostMapping("/api/user/add")
     public Response add(@RequestBody AddUserDTO addUser){
         return responseTemplate.doResponse(()->{
             Long userId = this.userService.add(addUser);
@@ -38,7 +41,7 @@ public class UserController {
     }
 
     @ApiOperation(value = "使用用户id获取用户详情")
-    @GetMapping("/user/{id}")
+    @GetMapping("/api/user/{id}")
     public Response getById(@PathVariable("id") @ApiParam(value = "用户id") Long id){
         return responseTemplate.doResponse(()->{
             UserVO userVO = this.userService.getById(id);
@@ -46,9 +49,28 @@ public class UserController {
         });
     }
 
+    @ApiOperation(value = "使用登录名称获取用户详情")
+    @GetMapping("/api/user/loginId/{loginId}")
+    public Response getByLoginId(@PathVariable("loginId") @ApiParam(value = "登录名称") String loginId){
+        return responseTemplate.doResponse(()->{
+            UserVO userVO = this.userService.getByLoginIdAndTenementIdIsNull(loginId);
+            return Body.create("userDetail",userVO);
+        });
+    }
+
+    @ApiOperation(value = "使用登录名称获取用户详情")
+    @GetMapping("/api/user/tenement/{tenementId}/loginId/{loginId}")
+    public Response getByTenementIdAndLoginId(@PathVariable("tenementId") @ApiParam(value = "租户id") String tenementId,
+                                              @PathVariable("loginId") @ApiParam(value = "登录名称") String loginId){
+        return responseTemplate.doResponse(()->{
+            UserVO userVO = this.userService.getByLoginId(tenementId,loginId);
+            return Body.create("userDetail",userVO);
+        });
+    }
+
 
     @ApiOperation(value = "使用用户id删除用户")
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/api/user/{id}")
     public Response deleteById(@PathVariable("id") @ApiParam(value = "用户id") Long id){
         return responseTemplate.doResponse(()->{
             this.userService.deleteById(id);
@@ -57,6 +79,35 @@ public class UserController {
     }
 
 
+    @ApiOperation(value = "新增朋友")
+    @PostMapping("/api/user/friend/{id}/{friend}")
+    public Response addFriend(@PathVariable("id") @ApiParam(value = "用户id") Long id,
+                              @PathVariable("friend") @ApiParam(value = "朋友id") Long friend){
+        return responseTemplate.doResponse(()->{
+            this.userService.addFriend(id,friend);
+            return null;
+        });
+    }
+
+    @ApiOperation(value = "删除朋友")
+    @DeleteMapping("/api/user/friend/{id}/{friend}")
+    public Response deleteFriend(@PathVariable("id") @ApiParam(value = "用户id") Long id,
+                              @PathVariable("friend") @ApiParam(value = "朋友id") Long friend){
+        return responseTemplate.doResponse(()->{
+            this.userService.deleteFriend(id,friend);
+            return null;
+        });
+    }
+
+
+    @ApiOperation(value = "查询所有朋友")
+    @GetMapping("/api/user/friend/{id}")
+    public Response findFriend(@PathVariable("id") @ApiParam(value = "用户id") Long id){
+        return responseTemplate.doResponse(()->{
+            List<UserVO> userVOS = this.userService.findAllFriend(id);
+            return Body.create("friends",userVOS);
+        });
+    }
 
 
 }
