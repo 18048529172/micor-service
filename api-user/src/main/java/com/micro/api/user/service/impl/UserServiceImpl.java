@@ -49,6 +49,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserVO getByLoginIdAndTenementIdIsNull(String loginId) {
+        User user = userDAO.findOneByLoginIdAndTenementIdIsNull(loginId);
+        return user.toVO();
+    }
+
+    @Override
     public Long countFriend(Long id) {
         return friendDAO.countByUserId(id);
     }
@@ -74,6 +80,12 @@ public class UserServiceImpl implements UserService {
         friends.setFriend(this.userDAO.getOne(friend));
         friends.setUser(this.userDAO.getOne(userId));
         this.friendDAO.save(friends);
+    }
+
+    @Transactional(rollbackFor = Throwable.class)
+    @Override
+    public void deleteFriend(Long userId, Long friend) {
+        this.friendDAO.deleteByUserIdAndFriendId(userId,friend);
     }
 
     @Override

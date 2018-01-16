@@ -29,15 +29,40 @@ public interface UserService {
     UserVO getByLoginId(String tenementId,String loginId);
 
     /**
-     *
+     *  通过登录名称，查询的用户
+     * @param loginId
+     * @return
+     */
+    UserVO getByLoginIdAndTenementIdIsNull(String loginId);
+
+    /**
+     * 统计朋友个数
+     * @param id
      * @return
      */
     Long countFriend(Long id);
 
-
+    /**
+     *  查询所有的朋友
+     *
+     * @param id
+     * @return
+     */
     List<UserVO> findAllFriend(Long id);
 
+    /**
+     * 新增朋友
+     * @param userId
+     * @param friend
+     */
     void addFriend(Long userId,Long friend);
+
+    /**
+     * 删除朋友
+     * @param userId
+     * @param friend
+     */
+    void deleteFriend(Long userId,Long friend);
 
     /**
      *  通过用户id获取用户信息

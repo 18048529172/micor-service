@@ -1,10 +1,7 @@
 package com.micro.api.user.dao;
 
 import com.micro.api.user.entity.Friend;
-import org.springframework.data.jpa.repository.EntityGraph;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 
 import javax.persistence.NamedEntityGraph;
@@ -21,4 +18,9 @@ public interface FriendDAO extends JpaRepository<Friend,Long>,JpaSpecificationEx
 
     @Query(countQuery = "select count(id) from #{#entityName} where user.id=?1 and friend.id=?2")
     long countByUserIdAndFriendId(Long userId, Long friend);
+
+    @Modifying(clearAutomatically = true)
+    @Query(value = "delete from #{#entityName} where user.id=?1 and friend.id=?2")
+    void deleteByUserIdAndFriendId(Long userId, Long friend);
+
 }

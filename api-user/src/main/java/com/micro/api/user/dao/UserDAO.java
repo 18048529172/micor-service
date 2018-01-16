@@ -18,4 +18,7 @@ public interface UserDAO extends JpaRepository<User,Long>,JpaSpecificationExecut
     long countByTenementIdIsNullAndLoginId(String loginId);
 
     long countByTenementIdAndLoginId(String tenementId, String loginId);
+
+    User findOneByLoginIdAndTenementIdIsNull(String loginId);
+
 }
