@@ -1,5 +1,6 @@
 package com.micro.data.user.vo;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
@@ -134,4 +135,8 @@ public class UserVO implements Serializable {
         this.createTime = createTime;
     }
 
+    @Override
+    public String toString() {
+        return JSONObject.toJSONString(this);
+    }
 }

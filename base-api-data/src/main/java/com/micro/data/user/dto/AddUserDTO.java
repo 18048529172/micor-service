@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 说明：
@@ -21,6 +22,9 @@ public class AddUserDTO implements Serializable {
 
     @ApiModelProperty(value = "姓名，长度不能超过4个字符",required = true)
     private String name;
+
+    @ApiModelProperty(value = "租户id",required = true)
+    private String tenementId;
 
     @ApiModelProperty(value = "密码，长度不能小于6个字符，不能超过20个字符",required = true)
     private String password;
@@ -39,6 +43,12 @@ public class AddUserDTO implements Serializable {
 
     @ApiModelProperty(value = "头像",required = false)
     private String headImage;
+
+    @ApiModelProperty(value = "生日",required = false)
+    private Date birthday;
+    @ApiModelProperty(value = "注册ip",required = false)
+    private String registIp;
+
 
     public String getLoginId() {
         return loginId;
@@ -104,6 +114,30 @@ public class AddUserDTO implements Serializable {
         this.headImage = headImage;
     }
 
+    public String getTenementId() {
+        return tenementId;
+    }
+
+    public void setTenementId(String tenementId) {
+        this.tenementId = tenementId;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getRegistIp() {
+        return registIp;
+    }
+
+    public void setRegistIp(String registIp) {
+        this.registIp = registIp;
+    }
+
     public void check(){
         ExceptionChecks.checkArgument((StringUtils.isNotBlank(this.getLoginId())),"登录名称不能为空");
         ExceptionChecks.checkArgument((this.getLoginId().length()<=6),"登录名称长度不能大于6个字符");
@@ -112,6 +146,7 @@ public class AddUserDTO implements Serializable {
         ExceptionChecks.checkArgument(StringUtils.isNotBlank(this.getPassword()),"密码不能为空");
         ExceptionChecks.checkArgument((this.getPassword().length()>=6 && this.getPassword().length() <= 20),"密码长度必须大于等于6位字符小于等于20个字符");
         ExceptionChecks.checkArgument(StringUtils.isNotBlank(this.getEmail()),"电子邮件不能为空");
+        ExceptionChecks.checkArgument((StringUtils.isNotBlank(this.getHeadImage())),"头像不能为空");
     }
 
 
