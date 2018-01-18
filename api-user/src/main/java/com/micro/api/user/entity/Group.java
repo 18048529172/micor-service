@@ -92,4 +92,22 @@ public class Group implements Serializable {
         this.setCreateTime(new Date());
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if (!(o instanceof Group)){
+            return false;
+        }
+
+        Group group = (Group) o;
+
+        return id.equals(group.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

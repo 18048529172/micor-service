@@ -10,6 +10,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * @author liwei
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfiguration {
@@ -30,7 +33,7 @@ public class SwaggerConfiguration {
                 .title("swagger-bootstrap-ui RESTful APIs")
                 .description("swagger-bootstrap-ui")
                 .termsOfServiceUrl("http://localhost:8999/")
-                .contact("developer@mail.com")
+                //.contact("developer@mail.com")
                 .version("1.0")
                 .build();
     }
