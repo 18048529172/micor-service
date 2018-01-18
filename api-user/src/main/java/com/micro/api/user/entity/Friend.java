@@ -3,6 +3,9 @@ package com.micro.api.user.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * @author liwei
+ */
 @NamedEntityGraph(name = "join.fetch.friend",
         attributeNodes = @NamedAttributeNode("friend"))
 @Entity
@@ -43,5 +46,24 @@ public class Friend implements Serializable {
 
     public void setFriend(User friend) {
         this.friend = friend;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()){
+            return false;
+        }
+
+        Friend friend = (Friend) o;
+
+        return getId().equals(friend.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
     }
 }

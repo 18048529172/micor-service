@@ -9,6 +9,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import java.util.List;
 
+/**
+ * @author liwei
+ */
 @Configuration
 public class FastJsonMessageConverters extends WebMvcConfigurerAdapter {
 

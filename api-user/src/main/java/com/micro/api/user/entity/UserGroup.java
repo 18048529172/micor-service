@@ -48,4 +48,23 @@ public class UserGroup implements Serializable {
     public void setGroup(Group group) {
         this.group = group;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if (!(o instanceof UserGroup)){
+            return false;
+        }
+
+        UserGroup userGroup = (UserGroup) o;
+
+        return id.equals(userGroup.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }
