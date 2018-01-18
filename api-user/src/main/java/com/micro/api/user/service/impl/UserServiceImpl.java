@@ -52,12 +52,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserVO getByLoginId(String tenementId, String loginId) {
         User user = userDAO.findOneByTenementIdAndLoginId(tenementId,loginId);
+        if(user == null){
+            return null;
+        }
         return user.toVO();
     }
 
     @Override
     public UserVO getByLoginIdAndTenementIdIsNull(String loginId) {
         User user = userDAO.findOneByLoginIdAndTenementIdIsNull(loginId);
+        if(user == null){
+            return null;
+        }
         return user.toVO();
     }
 
