@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
+/**
+ * 组合基本的api，通过zuul网关发布
+ */
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients

@@ -31,6 +31,15 @@ public class AuthorityController {
     @Autowired
     private TenementService tenementService;
 
+    /**
+     *  查询一个租户的所有权限
+     *
+     * @param accessToken
+     * @param name
+     * @param code
+     * @param userId
+     * @return
+     */
     @PostMapping(value = "/authority/role/list")
     public Response list(@RequestHeader(value = "accessToken",required = true) String accessToken,
                          @RequestParam(value = "name",required = false) String name,
