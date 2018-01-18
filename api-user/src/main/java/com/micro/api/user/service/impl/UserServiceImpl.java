@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -128,7 +127,7 @@ public class UserServiceImpl implements UserService {
         User user = this.userDAO.findOne(addGroup.getCreateUserId());
         ExceptionChecks.checkArgument(user != null,"用户无效");
         //群名称是重复
-        long nameCount = groupDAO.countByUserAndName(user,addGroup.getName());
+        long nameCount = groupDAO.countByCreateByAndName(user,addGroup.getName());
         ExceptionChecks.checkArgument(nameCount ==0,"名称重复");
         Group group = new Group();
         group.fromDTO(addGroup);

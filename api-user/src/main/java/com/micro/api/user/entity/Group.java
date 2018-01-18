@@ -36,7 +36,7 @@ public class Group implements Serializable {
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private Set<UserGroup> userGroups = new HashSet<>();
 
-    private Date createTime;
+    private Date createTime = new Date();
 
 
     public Long getId() {
