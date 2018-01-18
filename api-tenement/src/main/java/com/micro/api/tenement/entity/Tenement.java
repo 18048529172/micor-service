@@ -114,9 +114,6 @@ public class Tenement implements Serializable {
         return createdDatetime;
     }
 
-    public void setCreatedDatetime(Date createdDatetime) {
-        this.createdDatetime = createdDatetime;
-    }
 
     public String getApplyUserLoginId() {
         return applyUserLoginId;
