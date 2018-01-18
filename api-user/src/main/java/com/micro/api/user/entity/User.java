@@ -89,6 +89,14 @@ public class User implements Serializable {
      *  是否是激活的
      */
     private Boolean isActivate = false;
+    /**
+     * 最多能创建群的个数
+     */
+    private Integer maxGroupNumber = 10;
+    /**
+     * 最多能加多少朋友
+     */
+    private Integer maxFriendNumber = 500;
 
 
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
@@ -97,6 +105,14 @@ public class User implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private Set<Friend> friends = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+    private Set<UserGroup> userGroups = new HashSet<>();
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+    private Set<Group> groups = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -234,7 +250,37 @@ public class User implements Serializable {
         this.friends = friends;
     }
 
+    public Integer getMaxGroupNumber() {
+        return maxGroupNumber;
+    }
 
+    public void setMaxGroupNumber(Integer maxGroupNumber) {
+        this.maxGroupNumber = maxGroupNumber;
+    }
+
+    public Integer getMaxFriendNumber() {
+        return maxFriendNumber;
+    }
+
+    public void setMaxFriendNumber(Integer maxFriendNumber) {
+        this.maxFriendNumber = maxFriendNumber;
+    }
+
+    public Set<UserGroup> getUserGroups() {
+        return userGroups;
+    }
+
+    public void setUserGroups(Set<UserGroup> userGroups) {
+        this.userGroups = userGroups;
+    }
+
+    public Set<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
+    }
 
     public void fromAdd(AddUserDTO addUser){
         this.setSex(addUser.getSex());
@@ -268,6 +314,8 @@ public class User implements Serializable {
         vo.setPassword(this.getPassword());
         vo.setQq(this.getQq());
         vo.setSex(this.getSex());
+        vo.setMaxFriendNumber(this.getMaxFriendNumber());
+        this.setMaxGroupNumber(this.getMaxGroupNumber());
         return vo;
     }
 

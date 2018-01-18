@@ -1,11 +1,15 @@
 package com.micro.api.user.service.impl;
 
 import com.micro.api.user.dao.FriendDAO;
+import com.micro.api.user.dao.GroupDAO;
 import com.micro.api.user.dao.UserDAO;
 import com.micro.api.user.entity.Friend;
+import com.micro.api.user.entity.Group;
 import com.micro.api.user.entity.User;
 import com.micro.api.user.service.UserService;
+import com.micro.data.user.dto.AddGroupDTO;
 import com.micro.data.user.dto.AddUserDTO;
+import com.micro.data.user.vo.GroupVO;
 import com.micro.data.user.vo.UserVO;
 import com.micro.exception.ExceptionChecks;
 import org.apache.commons.lang3.StringUtils;
@@ -14,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,6 +34,9 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
     @Autowired
     private FriendDAO friendDAO;
+
+    @Autowired
+    private GroupDAO groupDAO;
 
     @Transactional(rollbackFor = Throwable.class)
     @Override
@@ -73,9 +81,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addFriend(Long userId, Long friend) {
         long count = this.friendDAO.countByUserIdAndFriendId(userId,friend);
-        if(count == 1) {
-            return ;
-        }
+        ExceptionChecks.checkLogic(count == 0,"已经添加");
+        //验证上限
+        User user = this.userDAO.findOne(userId);
+        long countFriend = this.countFriend(userId);
+        ExceptionChecks.checkLogic(countFriend<user.getMaxFriendNumber(),"添加朋友数已经达到上限");
+        ExceptionChecks.checkLogic(count == 0,"已经添加");
         Friend friends = new Friend();
         friends.setFriend(this.userDAO.getOne(friend));
         friends.setUser(this.userDAO.getOne(userId));
@@ -86,6 +97,109 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteFriend(Long userId, Long friend) {
         this.friendDAO.deleteByUserIdAndFriendId(userId,friend);
+    }
+
+    /**
+     * 修改加朋友的个数，只能增多，不能减少
+     *
+     * @param userId
+     * @param friendNumber
+     */
+    @Transactional(rollbackFor = Throwable.class)
+    @Override
+    public void updateFriendNumber(Long userId, Integer friendNumber) {
+        ExceptionChecks.checkArgument(friendNumber > 0,"朋友个数不能小于0");
+        User user = this.userDAO.findOne(userId);
+        ExceptionChecks.checkArgument(user != null,"用户无效");
+        Integer maxFriendNumber = user.getMaxFriendNumber();
+        ExceptionChecks.checkArgument(friendNumber > maxFriendNumber,"朋友个数不能改小");
+        user.setMaxFriendNumber(friendNumber);
+    }
+
+    /**
+     * 新增群
+     *
+     * @param addGroup
+     */
+    @Transactional(rollbackFor = Throwable.class)
+    @Override
+    public void createGroup(AddGroupDTO addGroup) {
+        addGroup.check();
+        User user = this.userDAO.findOne(addGroup.getCreateUserId());
+        ExceptionChecks.checkArgument(user != null,"用户无效");
+        //群名称是重复
+        long nameCount = groupDAO.countByUserAndName(user,addGroup.getName());
+        ExceptionChecks.checkArgument(nameCount ==0,"名称重复");
+        Group group = new Group();
+        group.fromDTO(addGroup);
+        group.setCreateBy(user);
+        this.groupDAO.save(group);
+
+    }
+
+    /**
+     * 删除群
+     *
+     * @param groupId
+     */
+    @Override
+    public void deleteGroup(Long groupId) {
+
+    }
+
+    /**
+     * 修改群名称
+     *
+     * @param groupId
+     * @param name
+     */
+    @Override
+    public void updateGroupName(Long groupId, String name) {
+
+    }
+
+    /**
+     * 查询群下的所有人
+     *
+     * @param groupId
+     * @return
+     */
+    @Override
+    public List<UserVO> findByGroup(Long groupId) {
+        return null;
+    }
+
+    /**
+     * 添加一个人到群
+     *
+     * @param userId
+     * @param groupId
+     */
+    @Override
+    public void addUserToGroup(Long userId, Long groupId) {
+
+    }
+
+    /**
+     * 查询自己创建的群
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<GroupVO> findMyCreateGroup(Long userId) {
+        return null;
+    }
+
+    /**
+     * 查询自己加入的群
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<GroupVO> findMyJoinGroup(Long userId) {
+        return null;
     }
 
     @Override

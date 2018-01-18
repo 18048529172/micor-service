@@ -84,6 +84,7 @@ public class UserController {
     public Response addFriend(@PathVariable("id") @ApiParam(value = "用户id") Long id,
                               @PathVariable("friend") @ApiParam(value = "朋友id") Long friend){
         return responseTemplate.doResponse(()->{
+
             this.userService.addFriend(id,friend);
             return null;
         });
