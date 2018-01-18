@@ -83,13 +83,9 @@ public class Group implements Serializable {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 
     public void fromDTO(AddGroupDTO addGroup){
         this.setName(addGroup.getName());
-        this.setCreateTime(new Date());
     }
 
     @Override
