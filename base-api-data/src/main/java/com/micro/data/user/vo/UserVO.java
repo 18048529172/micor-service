@@ -36,6 +36,16 @@ public class UserVO implements Serializable {
 
     private Boolean isActivate = false;
 
+    /**
+     * 最多能创建群的个数
+     */
+    private Integer maxGroupNumber;
+    /**
+     * 最多能加多少朋友
+     */
+    private Integer maxFriendNumber;
+
+
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime = new Date();
 
@@ -133,6 +143,22 @@ public class UserVO implements Serializable {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getMaxGroupNumber() {
+        return maxGroupNumber;
+    }
+
+    public void setMaxGroupNumber(Integer maxGroupNumber) {
+        this.maxGroupNumber = maxGroupNumber;
+    }
+
+    public Integer getMaxFriendNumber() {
+        return maxFriendNumber;
+    }
+
+    public void setMaxFriendNumber(Integer maxFriendNumber) {
+        this.maxFriendNumber = maxFriendNumber;
     }
 
     @Override
