@@ -1,28 +1,22 @@
 package com.micro.web.response;
 
-import com.micro.exception.AbsException;
-import com.micro.exception.ExceptionCodes;
+
+import com.micro.base.exception.AbsException;
+import com.micro.base.exception.ExceptionCodes;
 
 /**
  * @author 李伟
  */
 public class ResponseTemplate {
 
-    public static Response createSuccess(){
-        return createResponse("200","success");
+    private String errorMessage = "请求失败";
+
+    public ResponseTemplate(){
+        this("请求失败");
     }
 
-    public static Response createFail( String errorMessage ){
-        return createResponse(ExceptionCodes.ERROR.getCode(),errorMessage);
-    }
-
-    public static Response createResponse(String code,String message){
-        Response response = new Response();
-        Meta meta = new Meta();
-        meta.setCode(code);
-        meta.setMessage(message);
-        response.setMeta(meta);
-        return response;
+    public ResponseTemplate(String errorMessage){
+        this.errorMessage = errorMessage;
     }
 
     public Response doResponse(ResponseHandler handler){
@@ -40,7 +34,7 @@ public class ResponseTemplate {
                 meta.setMessage(absException.getMessage());
                 meta.setCode(absException.getExceptionCodes().getCode());
             }else{
-                meta.setMessage("请求失败，请联系管理员");
+                meta.setMessage(this.errorMessage);
                 meta.setCode(ExceptionCodes.ERROR.getCode());
             }
         }finally {
@@ -48,6 +42,23 @@ public class ResponseTemplate {
             meta.setRequestTime(endTime - startTime);
             response.setMeta(meta);
         }
+        return response;
+    }
+
+    public static Response createSuccess(){
+        return createResponse("200","success");
+    }
+
+    public static Response createFail( String errorMessage ){
+        return createResponse(ExceptionCodes.ERROR.getCode(),errorMessage);
+    }
+
+    public static Response createResponse(String code,String message){
+        Response response = new Response();
+        Meta meta = new Meta();
+        meta.setCode(code);
+        meta.setMessage(message);
+        response.setMeta(meta);
         return response;
     }
 
