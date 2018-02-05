@@ -12,11 +12,14 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.GET;
 import java.util.List;
 
 /**
  * 说明：
+ *
+ *
+ *
+ *       用户服务接口
  *
  * @author liw@suncd.com
  * @date 2017/12/27 22:17
@@ -58,7 +61,7 @@ public class UserController {
         });
     }
 
-    @ApiOperation(value = "使用登录名称获取用户详情")
+    @ApiOperation(value = "使用登录名称获和租户id取用户详情")
     @GetMapping("/api/user/tenement/{tenementId}/loginId/{loginId}")
     public Response getByTenementIdAndLoginId(@PathVariable("tenementId") @ApiParam(value = "租户id") String tenementId,
                                               @PathVariable("loginId") @ApiParam(value = "登录名称") String loginId){

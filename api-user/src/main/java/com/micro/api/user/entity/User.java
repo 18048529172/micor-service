@@ -110,7 +110,7 @@ public class User implements Serializable {
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private Set<UserGroup> userGroups = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "createBy")
     @Cascade({org.hibernate.annotations.CascadeType.ALL})
     private Set<Group> groups = new HashSet<>();
 

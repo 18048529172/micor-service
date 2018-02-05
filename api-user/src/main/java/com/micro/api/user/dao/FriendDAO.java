@@ -25,7 +25,7 @@ public interface FriendDAO extends JpaRepository<Friend,Long>,JpaSpecificationEx
      * @return
      */
     @EntityGraph(value = "join.fetch.friend",type = EntityGraph.EntityGraphType.LOAD)
-    @Query(value = "select friend from #{#entityName} friend  where friend.user.id=?1")
+    @Query(value = "select f from #{#entityName} f join fetch f.user user join fetch f.friend d where user.id=?1 and d.isDelete=false ")
     List<Friend> findByUserId(Long id);
 
     /**

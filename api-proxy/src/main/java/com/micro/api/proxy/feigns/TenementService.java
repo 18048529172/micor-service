@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 @FeignClient(value = "micro-api-tenement")
 public interface TenementService {
-
+    /**
+     *  返回租户 TenementVO
+     * @param appId
+     * @return
+     */
     @GetMapping("/api/tenement/{appId}")
     Response getTenementByAppId(@PathVariable("appId") String appId);
 

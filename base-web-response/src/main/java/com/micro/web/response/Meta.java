@@ -3,8 +3,10 @@ package com.micro.web.response;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
+
 @ApiModel
-public class Meta {
+public class Meta implements Serializable{
 
     @ApiModelProperty(value = "返回码，200:成功,其他：失败",notes = "200:成功,其他：失败")
     private String code;

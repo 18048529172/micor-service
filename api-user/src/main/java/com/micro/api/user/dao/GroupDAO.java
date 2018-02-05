@@ -19,5 +19,5 @@ public interface GroupDAO extends JpaRepository<Group,Long>,JpaSpecificationExec
      * @param name
      * @return
      */
-    long countByUserAndName(User user, String name);
+    long countByCreateByAndName(User user, String name);
 }
